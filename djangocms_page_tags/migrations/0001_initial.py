@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
             name="TitleTags",
             fields=[
                 ("id", models.AutoField(verbose_name="ID", auto_created=True, serialize=False, primary_key=True)),
-                ("extended_object", models.OneToOneField(to="cms.Title", editable=False, on_delete=models.CASCADE)),
+                ("extended_object", models.OneToOneField(to="cms.PageContent", editable=False, on_delete=models.CASCADE)),
                 (
                     "public_extension",
                     models.OneToOneField(

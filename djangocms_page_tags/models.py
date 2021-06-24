@@ -1,6 +1,6 @@
 from cms.extensions import PageExtension, TitleExtension
 from cms.extensions.extension_pool import extension_pool
-from cms.models import Page, Title
+from cms.models import Page, PageContent
 from django.core.cache import cache
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
@@ -42,7 +42,7 @@ def cleanup_page(sender, instance, **kwargs):
     cache.delete(key)
 
 
-@receiver(pre_delete, sender=Title)
+@receiver(pre_delete, sender=PageContent)
 def cleanup_title(sender, instance, **kwargs):
     site_id = instance.page.node.site_id
     key = get_cache_key(None, instance.page, instance.language, site_id, True)
